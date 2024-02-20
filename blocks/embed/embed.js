@@ -67,6 +67,7 @@ const embedVev = (url, block) => {
     embedBlock.append(vevBlock);
   };
   body.append(script);
+  return "";
 };
 
 const loadEmbed = (block, link, autoplay) => {
