@@ -60,3 +60,13 @@
   top: 4px;
   left: 7px;
 }
+
+main .section--vev {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.section--vev .embed,
+.section--vev .embed-wrapper {
+  max-width: unset;
+}

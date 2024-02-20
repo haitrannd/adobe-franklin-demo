@@ -62,6 +62,7 @@ const embedVev = (url, block) => {
   script.onload = () => {
     const vevBlock = document.querySelector('.vev');
     const embedBlock = block;
+    embedBlock.closest('.section').classList.add('section--vev');
     embedBlock.innerHTML = '';
     embedBlock.append(vevBlock);
   };
