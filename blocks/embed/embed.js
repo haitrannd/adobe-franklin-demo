@@ -55,13 +55,13 @@ const embedTwitter = (url) => {
   return embedHTML;
 };
 
-const embedVev = (url) => {
+const embedVev = (url, block) => {
   const body = document.querySelector('body');
   const script = document.createElement('script');
   script.src = url;
   script.onload = () => {
     const vevBlock = document.querySelector('.vev');
-    const embedBlock = document.querySelector('.embed-wrapper');
+    const embedBlock = block;
     embedBlock.innerHTML = '';
     embedBlock.append(vevBlock);
   };
@@ -95,7 +95,11 @@ const loadEmbed = (block, link, autoplay) => {
   const config = EMBEDS_CONFIG.find((e) => e.match.some((match) => link.includes(match)));
   const url = new URL(link);
   if (config) {
-    block.innerHTML = config.embed(url, autoplay);
+    if (config.embed.name === 'embedVev') {
+      block.innerHTML = config.embed(url, block);
+    } else {
+      block.innerHTML = config.embed(url, autoplay);
+    }
     block.classList = `block embed embed-${config.match[0]}`;
   } else {
     block.innerHTML = getDefaultEmbed(url);
