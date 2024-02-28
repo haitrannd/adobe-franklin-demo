@@ -56,13 +56,17 @@ const embedTwitter = (url) => {
 };
 
 const embedVev = (url, block) => {
-  loadScript(url, () => {
+  const body = document.querySelector('body');
+  const script = document.createElement('script');
+  script.src = url;
+  script.onload = () => {
     const vevBlock = document.querySelector('.vev');
     const embedBlock = block;
     embedBlock.closest('.section').classList.add('section--vev');
     embedBlock.innerHTML = '';
     embedBlock.append(vevBlock);
-  });
+  };
+  body.append(script);
   return "";
 };
 

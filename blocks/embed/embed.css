@@ -70,3 +70,7 @@ main .section--vev {
 .section--vev .embed-wrapper {
   max-width: unset;
 }
+
+#vevwatermark {
+  display: none !important;
+}
